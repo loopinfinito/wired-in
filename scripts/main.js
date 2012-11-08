@@ -5,30 +5,30 @@ $('a').click( function( event ){
 $('#prev').click( function(){
 
 	if( !$(this).hasClass('disabled') )
-		console.log('prev')
+		player.prev()
 })
 
 $('#next').click( function(){
 
 	if( !$(this).hasClass('disabled') )
-		console.log('next')
+		player.next()
 })
 
 $('#button').click( function(){
 
 	if( $(this).hasClass('play') ){
 
-		console.log('play')
+		player.play()
 		$(this).removeClass('play').addClass('pause')
 
 	} else {
 
-		console.log('pause')
+		player.pause()
 		$(this).removeClass('pause').addClass('play')
 	}
 })
 
 $('#tracklist a').click( function(){
 
-	console.log('go to ' + $(this).attr('href'))
+	player.play( $(this).attr('href') )
 })
