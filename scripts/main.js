@@ -30,5 +30,5 @@ $('#button').click( function(){
 
 $('#tracklist a').click( function(){
 
-	player.play( $(this).attr('href') )
+	player.play( $(this).attr('data-index') )
 })
