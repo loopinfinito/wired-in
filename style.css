@@ -4,7 +4,7 @@
 }
 
 html {
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 body {
@@ -12,7 +12,7 @@ body {
 	font-size: 14px;
 	color: #ddd;
 	background: #272722;
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 h1 {
