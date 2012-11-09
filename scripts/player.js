@@ -19,35 +19,27 @@ var player = ( function(){
 			$('#tracklist a').each( function( index, element ){
 
 				$(this).attr( 'data-index', index )
-				player.tracklist[ index ] = $('<audio></audio>').appendTo('body').attr( 'src', 'music/1/'+$(this).attr( 'data-src' ) )[0]
-				player.tracklist[ index ].addEventListener( 'ended', player.next )
+				player.tracklist[ index ] = $('<audio controls style=""></audio>').appendTo('body').attr( 'src', 'music/1/'+$(this).attr( 'data-src' ) )[0]
+				player.tracklist[ index ].addEventListener( 'ended', function(){
+					player.next()
+				})
 			})
-
-			console.log(this.tracklist[0])
 		},
 
 		prev: function(){
 
-			var index
-
 			if( this.current == 0 )
-				index = this.tracklist.length - 1
+				this.play( this.tracklist.length - 1 )
 			else
-				index = this.current - 1
-
-			this.play( index )
+				this.play( this.current - 1 )
 		},
 
 		next: function(){
 
-			var index
-
 			if( this.current == this.tracklist.length - 1 )
-				index = 0
+				this.play( 0 )
 			else
-				index = this.current + 1
-
-			this.play( index )
+				this.play( this.current + 1 )
 		},
 
 		play: function( index ){
@@ -60,6 +52,9 @@ var player = ( function(){
 						this.stop()
 
 					this.tracklist[ this.current ].play()
+					$('#tracklist a').removeClass( 'playing' )
+					$('#tracklist a[data-index='+this.current+']').addClass( 'playing' )
+					this.playing = true
 					console.log('play')
 
 				} else if( index >= 0 && index < this.tracklist.length ){
@@ -69,8 +64,6 @@ var player = ( function(){
 					console.log('go to '+ index)
 					this.play()
 				}
-
-				this.playing = true
 			}
 		},
 
