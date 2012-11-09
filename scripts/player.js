@@ -28,12 +28,26 @@ var player = ( function(){
 
 		prev: function(){
 
-			console.log('prev')
+			var index
+
+			if( this.current == 0 )
+				index = this.tracklist.length - 1
+			else
+				index = this.current - 1
+
+			this.play( index )
 		},
 
 		next: function(){
 
-			console.log('next')
+			var index
+
+			if( this.current == this.tracklist.length - 1 )
+				index = 0
+			else
+				index = this.current + 1
+
+			this.play( index )
 		},
 
 		play: function( index ){

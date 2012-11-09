@@ -2,16 +2,24 @@ $('a').click( function( event ){
 	event.preventDefault()
 })
 
-$('#prev').click( function(){
+$('#prev-album').click( function(){
 
 	if( !$(this).hasClass('disabled') )
-		player.prev()
+		console.log('prev album')
+})
+
+$('#next-album').click( function(){
+
+	if( !$(this).hasClass('disabled') )
+		console.log('next album')
+})
+
+$('#prev').click( function(){
+	player.prev()
 })
 
 $('#next').click( function(){
-
-	if( !$(this).hasClass('disabled') )
-		player.next()
+	player.next()
 })
 
 $('#toggle-play').click( function(){
@@ -20,13 +28,13 @@ $('#toggle-play').click( function(){
 
 		player.play()
 		$(this).removeClass('play').addClass('pause')
-		$('#prev-music, #next-music').removeClass('hidden')
+		$('#prev, #next').removeClass('hidden')
 
 	} else {
 
 		player.pause()
 		$(this).removeClass('pause').addClass('play')
-		$('#prev-music, #next-music').addClass('hidden')
+		$('#prev, #next').addClass('hidden')
 	}
 })
 

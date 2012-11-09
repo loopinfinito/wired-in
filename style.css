@@ -63,12 +63,12 @@ audio {
 		text-decoration: none;
 	}
 
-#prev {
+#prev-album {
 	left: 50%;
 	margin-left: -350px;
 }
 
-#next {
+#next-album {
 	right: 50%;
 	margin-right: -350px;
 }
