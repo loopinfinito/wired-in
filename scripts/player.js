@@ -54,15 +54,22 @@ var player = ( function(){
 					this.tracklist[ this.current ].play()
 					$('#tracklist a').removeClass( 'playing' )
 					$('#tracklist a[data-index='+this.current+']').addClass( 'playing' )
+					$('#toggle-play').removeClass('play').addClass('pause')
+					$('#prev, #next').removeClass('hidden')
 					this.playing = true
 					console.log('play')
 
-				} else if( index >= 0 && index < this.tracklist.length ){
+				} else {
 
-					this.stop()
-					this.current = index
-					console.log('go to '+ index)
-					this.play()
+					index = parseInt( index )
+
+					if( index >= 0 && index < this.tracklist.length ){
+
+						this.stop()
+						this.current = index
+						console.log('go to '+ index)
+						this.play()
+					}
 				}
 			}
 		},
@@ -77,6 +84,8 @@ var player = ( function(){
 		pause: function(){
 
 			this.tracklist[ this.current ].pause()
+			$('#toggle-play').removeClass('pause').addClass('play')
+			$('#prev, #next').addClass('hidden')
 			this.playing = false
 			console.log('pause')
 		}

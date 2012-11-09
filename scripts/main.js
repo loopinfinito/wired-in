@@ -27,14 +27,14 @@ $('#toggle-play').click( function(){
 	if( $(this).hasClass('play') ){
 
 		player.play()
-		$(this).removeClass('play').addClass('pause')
-		$('#prev, #next').removeClass('hidden')
+		// $(this).removeClass('play').addClass('pause')
+		// $('#prev, #next').removeClass('hidden')
 
 	} else {
 
 		player.pause()
-		$(this).removeClass('pause').addClass('play')
-		$('#prev, #next').addClass('hidden')
+		// $(this).removeClass('pause').addClass('play')
+		// $('#prev, #next').addClass('hidden')
 	}
 })
 
