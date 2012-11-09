@@ -19,7 +19,7 @@ var player = ( function(){
 			$('#tracklist a').each( function( index, element ){
 
 				$(this).attr( 'data-index', index )
-				player.tracklist[ index ] = $('<audio controls style=""></audio>').appendTo('body').attr( 'src', 'music/1/'+$(this).attr( 'data-src' ) )[0]
+				player.tracklist[ index ] = $('<audio style="display:none;"></audio>').appendTo('body').attr( 'src', 'music/1/'+$(this).attr( 'data-src' ) )[0]
 				player.tracklist[ index ].addEventListener( 'ended', function(){
 					player.next()
 				})
@@ -54,8 +54,8 @@ var player = ( function(){
 					this.tracklist[ this.current ].play()
 					$('#tracklist a').removeClass( 'playing' )
 					$('#tracklist a[data-index='+this.current+']').addClass( 'playing' )
-					$('#toggle-play').removeClass('play').addClass('pause')
-					$('#prev, #next').removeClass('hidden')
+					$('#toggle-play').removeClass( 'play' ).addClass( 'pause' )
+					$('#prev, #next').removeClass( 'hidden' )
 					this.playing = true
 					console.log('play')
 
@@ -65,10 +65,20 @@ var player = ( function(){
 
 					if( index >= 0 && index < this.tracklist.length ){
 
-						this.stop()
-						this.current = index
-						console.log('go to '+ index)
-						this.play()
+						if( index == this.current ){
+
+							if( this.playing )
+								this.pause()
+							else
+								this.play()
+
+						} else {
+
+							this.stop()
+							this.current = index
+							console.log('go to '+ index)
+							this.play()
+						}
 					}
 				}
 			}
@@ -84,8 +94,8 @@ var player = ( function(){
 		pause: function(){
 
 			this.tracklist[ this.current ].pause()
-			$('#toggle-play').removeClass('pause').addClass('play')
-			$('#prev, #next').addClass('hidden')
+			$('#toggle-play').removeClass( 'pause' ).addClass( 'play' )
+			$('#prev, #next').addClass( 'hidden' )
 			this.playing = false
 			console.log('pause')
 		}
