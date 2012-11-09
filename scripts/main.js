@@ -14,17 +14,19 @@ $('#next').click( function(){
 		player.next()
 })
 
-$('#button').click( function(){
+$('#toggle-play').click( function(){
 
 	if( $(this).hasClass('play') ){
 
 		player.play()
 		$(this).removeClass('play').addClass('pause')
+		$('#prev-music, #next-music').removeClass('hidden')
 
 	} else {
 
 		player.pause()
 		$(this).removeClass('pause').addClass('play')
+		$('#prev-music, #next-music').addClass('hidden')
 	}
 })
 

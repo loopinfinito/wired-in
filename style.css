@@ -12,7 +12,6 @@ body {
 	font-size: 14px;
 	color: #ddd;
 	background: #272722;
-	padding-bottom: 80px;
 	overflow: hidden;
 }
 
@@ -27,6 +26,10 @@ h1 {
 a {
 	color: #ddd;
 	text-decoration: none;
+}
+
+audio {
+	display: none;
 }
 
 .controls {
@@ -95,6 +98,11 @@ a {
 		content: "'";
 	}
 
+	.green.double::before,
+	.green.double::after {
+		content: '"';
+	}
+
 #cover {
 	width: 400px;
 	height: 400px;
@@ -106,32 +114,112 @@ a {
 	box-shadow: 0px 2px 6px 1px rgba(0,0,0,0.5);
 	position: relative;
 	margin: auto;
+	overflow: hidden;
 }
 
 .w1 {
 	background-image: url(images/wired01.png);
 }
 
-#button {
-	width: 180px;
-	height: 180px;
+.button {
 	background: rgba(0,0,0,0.5);
 	border-radius: 50%;
 	position: absolute;
-	top: 110px;
-	left: 110px;
 	cursor: pointer;
 	box-shadow: 1px 2px 4px rgba(0,0,0,0.4);
 	overflow: hidden;
 	-webkit-transition: background 0.5s ease, box-shadow 0.5s ease;
 }
 
-#button:hover {
+.button:hover {
 	background: rgba(0,0,0,0.7);
 	box-shadow: 1px 2px 6px 2px rgba(0,0,0,0.6);
 }
 
-#button.play::before {
+.button.prev,
+.button.next {
+	width: 69px;
+	height: 69px;
+	top: 164px;
+	-webkit-transition: all 0.5s ease;
+}
+
+.button.prev {
+	left: 22px;
+}
+
+.button.prev.hidden {
+	left: -75px;
+	opacity: 0;
+}
+
+.button.prev::before {
+	content: '';
+	width: 6px;
+	height: 30px;
+	background: #ccc;
+	display: block;
+	position: absolute;
+	left: 20px;
+	top: 20px;
+	opacity: 0.7;
+}
+
+.button.prev::after {
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 20px;
+	opacity: 0.7;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-right: 20px solid #ccc;
+	left: 25px;
+}
+
+.button.next {
+	right: 22px;
+}
+
+.button.next.hidden {
+	right: -75px;
+}
+
+.button.next::before {
+	content: '';
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: 20px;
+	opacity: 0.7;
+	border-top: 15px solid transparent;
+	border-bottom: 15px solid transparent;
+	border-left: 20px solid #ccc;
+	left: 23px;
+}
+
+.button.next::after {
+	content: '';
+	width: 6px;
+	height: 30px;
+	background: #ccc;
+	display: block;
+	position: absolute;
+	left: 42px;
+	top: 20px;
+	opacity: 0.7;
+}
+
+.button.play,
+.button.pause {
+	width: 180px;
+	height: 180px;
+	top: 110px;
+	left: 110px;
+}
+
+.button.play::before {
 	content: '';
 	width: 0;
 	height: 0;
@@ -144,7 +232,7 @@ a {
 	left: 60px;
 }
 
-#button.pause::before {
+.button.pause::before {
 	content: '';
 	width: 30px;
 	height: 80px;
@@ -156,7 +244,7 @@ a {
 	opacity: 0.7;
 }
 
-#button.pause::after {
+.button.pause::after {
 	content: '';
 	width: 30px;
 	height: 80px;
@@ -204,3 +292,18 @@ a {
 			margin-left: 7px;
 			top: 1px;
 		}
+
+footer {
+	width: 400px;
+	margin: auto;
+	margin-top: 70px;
+	border-top: 1px dashed #666;
+	padding: 10px 0 50px 0;
+	text-align: right;
+	opacity: 0.4;
+	font-size: 12px;
+}
+
+	footer a:hover {
+		text-decoration: underline;
+	}

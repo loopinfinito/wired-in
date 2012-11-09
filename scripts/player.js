@@ -19,7 +19,7 @@ var player = ( function(){
 			$('#tracklist a').each( function( index, element ){
 
 				$(this).attr( 'data-index', index )
-				player.tracklist[ index ] = $('<audio controls></audio>').appendTo('body').attr( 'src', 'music/1/'+$(this).attr( 'data-src' ) )[0]
+				player.tracklist[ index ] = $('<audio></audio>').appendTo('body').attr( 'src', 'music/1/'+$(this).attr( 'data-src' ) )[0]
 				player.tracklist[ index ].addEventListener( 'ended', player.next )
 			})
 
