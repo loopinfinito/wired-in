@@ -24,18 +24,10 @@ $('#next').click( function(){
 
 $('#toggle-play').click( function(){
 
-	if( $(this).hasClass('play') ){
-
-		player.play()
-		// $(this).removeClass('play').addClass('pause')
-		// $('#prev, #next').removeClass('hidden')
-
-	} else {
-
+	if( player.playing )
 		player.pause()
-		// $(this).removeClass('pause').addClass('play')
-		// $('#prev, #next').addClass('hidden')
-	}
+	else
+		player.play()
 })
 
 $('#tracklist a').click( function(){

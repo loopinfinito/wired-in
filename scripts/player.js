@@ -52,8 +52,8 @@ var player = ( function(){
 						this.stop()
 
 					this.tracklist[ this.current ].play()
-					$('#tracklist a').removeClass( 'playing' )
-					$('#tracklist a[data-index='+this.current+']').addClass( 'playing' )
+					$('#tracklist a').removeClass( 'playing' ).removeClass( 'paused' )
+					$('#tracklist a[data-index='+this.current+']').removeClass( 'paused' ).addClass( 'playing' )
 					$('#toggle-play').removeClass( 'play' ).addClass( 'pause' )
 					$('#prev, #next').removeClass( 'hidden' )
 					this.playing = true
@@ -94,6 +94,7 @@ var player = ( function(){
 		pause: function(){
 
 			this.tracklist[ this.current ].pause()
+			$('#tracklist a[data-index='+this.current+']').removeClass( 'playing' ).addClass( 'paused' )
 			$('#toggle-play').removeClass( 'pause' ).addClass( 'play' )
 			$('#prev, #next').addClass( 'hidden' )
 			this.playing = false

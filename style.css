@@ -274,11 +274,13 @@ a {
 	}
 
 	#tracklist a:hover,
-	#tracklist a.playing {
+	#tracklist a.playing,
+	#tracklist a.paused {
 		background: rgba(0,0,0,0.2);
 	}
 
-		#tracklist a:hover::after {
+		#tracklist a:hover::after,
+		#tracklist a.paused::after {
 			width: 0;
 			height: 0;
 			content: '';
