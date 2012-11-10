@@ -19,11 +19,19 @@ var player = ( function(){
 			$('#tracklist a').each( function( index, element ){
 
 				$(this).attr( 'data-index', index )
-				player.tracklist[ index ] = $('<audio style="display:none;"></audio>').appendTo('body').attr( 'src', 'music/1/'+$(this).attr( 'data-src' ) )[0]
+
+				player.tracklist[ index ] = $('<audio></audio>').appendTo('body')
+					.attr( 'src', 'music/1/' + $(this).attr( 'data-src' ) )
+					.attr( 'preload', index != 0 ? 'none' : 'auto' )
+					.css( 'display', 'none' )[0]
+
 				player.tracklist[ index ].addEventListener( 'ended', function(){
 					player.next()
 				})
 			})
+			// player.tracklist[ 0 ].addEventListener( 'progress', function(){
+			// 	console.log( player.tracklist[0].buffered )
+			// })
 		},
 
 		prev: function(){
@@ -47,9 +55,6 @@ var player = ( function(){
 			if( this.tracklist.length > 0 ){
 
 				if( index == null ){
-
-					if( this.playing )
-						this.stop()
 
 					this.tracklist[ this.current ].play()
 					$('#tracklist a').removeClass( 'playing' ).removeClass( 'paused' )
