@@ -26,7 +26,8 @@ var player = ( function(){
 					.css( 'display', 'none' )
 					.append( '<source src="'+ music +'.mp3" type="audio/mpeg" />' )
 					.append( '<source src="'+ music +'.m4a" type="audio/mp4a-latm" />' )
-					.append( '<source src="'+ music +'.ogg" type="audio/ogg" />' )[0]
+					.append( '<source src="'+ music +'.ogg" type="audio/ogg" />' )
+					.get( 0 )
 
 				player.tracklist[ index ].addEventListener( 'ended', function(){
 					player.next()
