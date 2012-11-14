@@ -32,10 +32,34 @@ var player = ( function(){
 				player.tracklist[ index ].addEventListener( 'ended', function(){
 					player.next()
 				})
+
+				player.tracklist[ index ].addEventListener( 'progress', function(){
+
+					if( this.buffered.length > 0 ){
+
+						var percent = this.buffered.end( this.buffered.length-1 ) / this.duration * 100
+						// console.log( 'progress: ' + percent )
+						if( percent > 95 )
+							player.preloadNext()
+					}
+				})
 			})
-			// player.tracklist[ 0 ].addEventListener( 'progress', function(){
-			// 	console.log( player.tracklist[0].buffered )
-			// })
+		},
+
+		preloadNext: function(){
+
+			var index;
+
+			if( this.current == this.tracklist.length - 1 )
+				index = this.current = 0
+			else
+				index = this.current + 1
+
+			if( this.tracklist[ index ].preload != 'auto' ){
+
+				this.tracklist[ index ].preload = 'auto'
+				console.log( 'preloading ' + index )
+			}
 		},
 
 		prev: function(){
@@ -60,11 +84,11 @@ var player = ( function(){
 
 				if( index == null ){
 
-					this.tracklist[ this.current ].play()
 					$('#tracklist a').removeClass( 'playing' ).removeClass( 'paused' )
 					$('#tracklist a[data-index='+this.current+']').removeClass( 'paused' ).addClass( 'playing' )
 					$('#toggle-play').removeClass( 'play' ).addClass( 'pause' )
 					$('#prev, #next').removeClass( 'hidden' )
+					this.tracklist[ this.current ].play()
 					this.playing = true
 					console.log('play')
 
@@ -95,9 +119,15 @@ var player = ( function(){
 
 		stop: function(){
 
-			this.tracklist[ this.current ].pause()
-			this.tracklist[ this.current ].currentTime = 0
-			console.log('stop')
+			if( this.playing ){
+
+				this.tracklist[ this.current ].pause()
+
+				if( this.tracklist[ this.current ].currentTime != 0 )
+					this.tracklist[ this.current ].currentTime = 0
+
+				console.log('stop')
+			}
 		},
 
 		pause: function(){
