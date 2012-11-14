@@ -18,12 +18,15 @@ var player = ( function(){
 
 			$('#tracklist a').each( function( index, element ){
 
+				var music = 'music/01/wiredin_01_' + $(this).attr( 'data-music' )
 				$(this).attr( 'data-index', index )
 
 				player.tracklist[ index ] = $('<audio></audio>').appendTo('body')
-					.attr( 'src', 'music/1/' + $(this).attr( 'data-src' ) )
 					.attr( 'preload', index != 0 ? 'none' : 'auto' )
-					.css( 'display', 'none' )[0]
+					.css( 'display', 'none' )
+					.append( '<source src="'+ music +'.mp3" type="audio/mpeg" />' )
+					.append( '<source src="'+ music +'.m4a" type="audio/mp4a-latm" />' )
+					.append( '<source src="'+ music +'.ogg" type="audio/ogg" />' )[0]
 
 				player.tracklist[ index ].addEventListener( 'ended', function(){
 					player.next()
