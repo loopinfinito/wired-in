@@ -8,6 +8,8 @@ var player = ( function(){
 
 		playing: false,
 
+		currentAlbum: 1,
+
 		init: function(){
 
 			this.loadTracks()
@@ -163,22 +165,33 @@ $('#next-album').click( function(){
 })
 
 $('#prev').click( function(){
+
 	player.prev()
+	_gaq.push(['_trackEvent', 'controls', 'wiredIn('+ player.currentAlbum +')', 'prev'])
 })
 
 $('#next').click( function(){
+
 	player.next()
+	_gaq.push(['_trackEvent', 'controls', 'wiredIn('+ player.currentAlbum +')', 'next'])
 })
 
 $('#toggle-play').click( function(){
 
-	if( player.playing )
+	if( player.playing ){
+
 		player.pause()
-	else
+		_gaq.push(['_trackEvent', 'wiredIn('+ player.currentAlbum +')', 'controls', 'pause'])
+
+	} else {
+
 		player.play()
+		_gaq.push(['_trackEvent', 'wiredIn('+ player.currentAlbum +')', 'controls', 'play'])
+	}
 })
 
 $('#tracklist a').click( function(){
 
 	player.play( $(this).attr('data-index') )
+	_gaq.push(['_trackEvent', 'tracklist', 'wiredIn('+ player.currentAlbum +')', $(this).attr('data-music')])
 })
