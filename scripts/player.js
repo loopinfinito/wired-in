@@ -181,12 +181,12 @@ $('#toggle-play').click( function(){
 	if( player.playing ){
 
 		player.pause()
-		_gaq.push(['_trackEvent', 'wiredIn('+ player.currentAlbum +')', 'controls', 'pause'])
+		_gaq.push(['_trackEvent', 'controls', 'wiredIn('+ player.currentAlbum +')', 'pause'])
 
 	} else {
 
 		player.play()
-		_gaq.push(['_trackEvent', 'wiredIn('+ player.currentAlbum +')', 'controls', 'play'])
+		_gaq.push(['_trackEvent', 'controls', 'wiredIn('+ player.currentAlbum +')', 'play'])
 	}
 })
 
