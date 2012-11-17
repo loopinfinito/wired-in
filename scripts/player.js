@@ -13,6 +13,17 @@ var player = ( function(){
 		init: function(){
 
 			this.loadTracks()
+
+			// Events
+			// ------
+
+			// modifica o título da página de acordo com a música que está tocando
+			$( document ).on( 'play pause', function( event ) {
+
+				console.log( 'event play' )
+				player.changeTitle()
+			})
+
 			return this
 		},
 
@@ -74,10 +85,11 @@ var player = ( function(){
 
 		next: function(){
 
-			if( this.current == this.tracklist.length - 1 )
+			if( this.current == this.tracklist.length - 1 ) {
 				this.play( 0 )
-			else
+			} else {
 				this.play( this.current + 1 )
+			}
 		},
 
 		play: function( index ){
@@ -93,6 +105,7 @@ var player = ( function(){
 					this.tracklist[ this.current ].play()
 					this.playing = true
 					console.log('play')
+					$.event.trigger( 'play' )
 
 				} else {
 
@@ -104,8 +117,9 @@ var player = ( function(){
 
 							if( this.playing )
 								this.pause()
-							else
+							else {
 								this.play()
+							}
 
 						} else {
 
@@ -140,6 +154,21 @@ var player = ( function(){
 			$('#prev, #next').addClass( 'hidden' )
 			this.playing = false
 			console.log('pause')
+			$.event.trigger( 'pause' )
+		},
+
+		changeTitle: function() {
+			if ( this.playing ) {
+
+				var artista = $( '#tracklist a' ).eq( this.current ).attr( 'data-artist' )
+				var musica = $( '#tracklist a' ).eq( this.current ).attr( 'data-track' )
+
+				var title = '▶ ' + artista + ' - ' + musica
+				document.title = title
+
+			} else {
+				document.title = 'wiredIn(1)'
+			}
 		}
 	}
 
