@@ -24,6 +24,36 @@ var player = ( function(){
 				player.changeTitle()
 			})
 
+			// atalhos de teclado
+			$( document ).on( 'keydown', function( event ) {
+
+				// keycodes
+				var space = 32
+				var enter = 13
+				var arrowLeft = 37
+				var arrowRight = 39
+				var arrowUp = 38
+				var arrowDown = 40
+
+				if ( event.keyCode == space ) {
+					if ( player.playing ) {
+						player.pause()
+					} else {
+						player.play()
+					}
+
+					// previne o comportamento default
+					// do *space* de disparar a rolagem
+					return false
+				} else if ( event.keyCode == arrowLeft ) {
+					player.prev()
+					return false
+				} else if ( event.keyCode == arrowRight ) {
+					player.next()
+					return false
+				}
+			})
+
 			return this
 		},
 
