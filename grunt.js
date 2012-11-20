@@ -8,8 +8,8 @@ module.exports = function( grunt ) {
 				dest: "~/wiredin.loopinfinito.com.br/",
 				host: "loopinfinito@bugsy.dreamhost.com",
 				recursive: true,
-				syncDest: true,
-				exclude: [ '.git*', 'node_modules', '.DS_Store' ]
+				syncDest: false,
+				exclude: [ '.git*', 'node_modules', '.DS_Store', 'music' ]
 			}
 		}
 	})
