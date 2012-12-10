@@ -193,7 +193,7 @@ var player = ( function(){
 				var artista = $( '#tracklist a' ).eq( this.current ).attr( 'data-artist' )
 				var musica = $( '#tracklist a' ).eq( this.current ).attr( 'data-track' )
 
-				var title = '▶ ' + artista + ' - ' + musica
+				var title = decodeURIComponent('%E2%96%B6') + ' ' + artista + ' - ' + musica
 				document.title = title
 
 			} else {
