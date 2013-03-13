@@ -4,6 +4,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-connect'
+  grunt.loadNpmTasks 'grunt-contrib-coffee'
 
   # project configuration
   grunt.initConfig
@@ -21,9 +22,13 @@ module.exports = (grunt) ->
           style: 'compressed'
         files:
           'style.css': 'style.scss'
+    coffee:
+      compile:
+        files:
+          './scripts/player.js': './scripts/player.coffee'
     watch:
-      files: ['style.scss']
-      tasks: 'sass'
+      files: ['./style.scss', './scripts/player.coffee']
+      tasks: ['sass', 'coffee']
     connect:
       server:
         options:
