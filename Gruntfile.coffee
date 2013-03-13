@@ -3,6 +3,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-rsync'
   grunt.loadNpmTasks 'grunt-contrib-sass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-connect'
 
   # project configuration
   grunt.initConfig
@@ -23,6 +24,10 @@ module.exports = (grunt) ->
     watch:
       files: ['style.scss']
       tasks: 'sass'
+    connect:
+      server:
+        options:
+          port: 8000
 
-  grunt.registerTask('default', 'watch')
+  grunt.registerTask('default', ['connect', 'watch'])
 
