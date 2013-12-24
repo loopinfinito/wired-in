@@ -35,4 +35,3 @@ module.exports = (grunt) ->
           port: 8000
 
   grunt.registerTask('default', ['connect', 'watch'])
-

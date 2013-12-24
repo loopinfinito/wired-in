@@ -1,0 +1,20 @@
+{
+  "name": "wired-in",
+  "version": "2.0.0",
+  "description": "wiredIn do Loop Infinito",
+  "devDependencies": {
+    "coffee-script": "~1.6.2",
+    "grunt": "~0.4.0",
+    "grunt-rsync": "~0.1.0",
+    "grunt-contrib-coffee": "~0.6.0",
+    "grunt-contrib-connect": "~0.2.0",
+    "grunt-contrib-sass": "~0.2.2",
+    "grunt-contrib-watch": "~0.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/loopinfinito/wired-in.git"
+  },
+  "gitHead": "ed55c7515f4b525eb15094285f365824410a8067",
+  "readmeFilename": "README.md"
+}
