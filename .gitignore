@@ -2,4 +2,5 @@
 *.mp3
 *.m4a
 *.ogg
+*.css
 node_modules/*
