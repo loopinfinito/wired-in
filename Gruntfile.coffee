@@ -64,5 +64,5 @@ module.exports = (grunt) ->
         options:
           port: 8000
 
-  grunt.registerTask 'default', ['connect', 'watch:css', 'watch:js:app']
+  grunt.registerTask 'default', ['connect', 'watch']
   grunt.registerTask 'test', ['coffee:app', 'coffee:tests', 'jasmine']
