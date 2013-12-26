@@ -4,3 +4,4 @@
 *.ogg
 *.css
 node_modules/*
+.grunt/*
