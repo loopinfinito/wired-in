@@ -34,21 +34,21 @@ module.exports = (grunt) ->
         options:
           bare: true
         files:
-          'scripts/main.js': 'scripts/main.coffee',
+          'scripts/main.js': 'scripts/main.coffee'
       tests:
-        expand: true,
-        flatten: true,
-        cwd: 'tests/',
-        src: ['*.coffee'],
-        dest: 'tests/',
+        expand: true
+        flatten: true
+        cwd: 'tests/'
+        src: ['*.coffee']
+        dest: 'tests/'
         ext: '.js'
         options:
           bare: true
 
     jasmine:
-      src: 'scripts/*.js',
+      src: 'scripts/*.js'
       options:
-        specs: 'tests/*_spec.js',
+        specs: 'tests/*_spec.js'
         # helpers: 'spec/*Helper.coffee'
 
     watch:
@@ -64,5 +64,5 @@ module.exports = (grunt) ->
         options:
           port: 8000
 
-  grunt.registerTask('default', ['connect', 'watch:css', 'watch:js:app'])
-  grunt.registerTask('test', ['coffee:app', 'coffee:tests', 'jasmine']);
+  grunt.registerTask 'default', ['connect', 'watch:css', 'watch:js:app']
+  grunt.registerTask 'test', ['coffee:app', 'coffee:tests', 'jasmine']
