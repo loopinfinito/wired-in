@@ -52,8 +52,8 @@ module.exports = (grunt) ->
         # helpers: 'spec/*Helper.coffee'
 
     watch:
-      files: ['./styles/style.styl', './scripts/player.coffee']
-      tasks: ['stylus:dev', 'coffee']
+      files: ['./styles/style.styl', './scripts/*.coffee']
+      tasks: ['stylus:dev', 'test']
 
     connect:
       server:
