@@ -34,7 +34,7 @@ module.exports = (grunt) ->
         options:
           bare: true
         files:
-          'scripts/teste.js': 'scripts/teste.coffee',
+          'scripts/main.js': 'scripts/main.coffee',
       tests:
         expand: true,
         flatten: true,
@@ -52,13 +52,17 @@ module.exports = (grunt) ->
         # helpers: 'spec/*Helper.coffee'
 
     watch:
-      files: ['./styles/style.styl', './scripts/*.coffee']
-      tasks: ['stylus:dev', 'test']
+      css:
+        files: ['./styles/style.styl']
+        tasks: ['stylus:dev']
+      js:
+        files: ['./scripts/*.coffee', './tests/*.coffee']
+        tasks: ['test']
 
     connect:
       server:
         options:
           port: 8000
 
-  grunt.registerTask('default', ['connect', 'watch'])
+  grunt.registerTask('default', ['connect', 'watch:css', 'watch:js:app'])
   grunt.registerTask('test', ['coffee:app', 'coffee:tests', 'jasmine']);
