@@ -8,6 +8,12 @@ color-ciano = #4CD2FF
 color-blue = #6697D0
 color-red = #F07973
 
+// constants -------------------------------------------------------------------
+
+album-cover-dimension = 400px
+album-controls-margin = 150px
+album-buttons-padding = 22px
+
 // mixins ----------------------------------------------------------------------
 
 vendor-property(property, args)
@@ -17,12 +23,12 @@ vendor-property(property, args)
   -o-{property} s(args)
   {property} s(args)
 
-vendor-value(property, args)
-  {property} s('-webkit-%s', s(args))
-  {property} s('-moz-%s', s(args))
-  {property} s('-ms-%s', s(args))
-  {property} s('-o-%s', s(args))
-  {property} s(args)
+calc(property, args)
+  {property} s('-webkit-calc(%s)', s(args))
+  {property} s('-moz-calc(%s)', s(args))
+  {property} s('-ms-calc(%s)', s(args))
+  {property} s('-o-calc(%s)', s(args))
+  {property} s('calc(%s)', s(args))
 
 transition()
   vendor-property('transition', arguments)
@@ -96,11 +102,11 @@ body
 
 .wi-control-prev-album
   left 50%
-  margin-left -350px
+  margin-left -(album-controls-margin + (album-cover-dimension / 2))
 
 .wi-control-next-album
   right 50%
-  margin-right -350px
+  margin-right -(album-controls-margin + (album-cover-dimension / 2))
 
 .wi-control-name
   text-decoration underline
@@ -120,8 +126,8 @@ body
   position relative
   overflow hidden
   margin auto
-  width 400px
-  height @width
+  width album-cover-dimension
+  height album-cover-dimension
   border-radius 10px
   background-color #222
   background-position center
@@ -144,9 +150,9 @@ body
 
 .wi-button-prev,
 .wi-button-next
-  top 164px
   width 69px
   height @width
+  top ((album-cover-dimension - @width) / 2)
   transition('all 0.5s ease')
 
   &::before,
@@ -157,7 +163,7 @@ body
     opacity 0.7
 
 .wi-button-prev
-  left 22px
+  left album-buttons-padding
 
   &.wi-state-hidden
     left -75px
@@ -179,7 +185,7 @@ body
     border-bottom 15px solid transparent
 
 .wi-button-next
-  right 22px
+  right album-buttons-padding
 
   &.wi-state-hidden
     right -75px
@@ -201,10 +207,10 @@ body
     background #ccc
 
 .wi-button-play
-  top 110px
-  left @top
   width 180px
   height @width
+  top ((album-cover-dimension - @width) / 2)
+  left @top
 
   &.wi-state-play
     &::before
@@ -241,9 +247,9 @@ body
   position relative
   left 50%
   margin-top 80px
-  margin-left -200px
+  margin-left -(album-cover-dimension / 2)
   line-height 200%
-  vendor-value(width, 'calc(50% + 200px)')
+  calc(width, s('50% + %s', album-cover-dimension / 2))
 
 .wi-track
   position relative
