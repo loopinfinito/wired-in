@@ -3,5 +3,6 @@
 *.m4a
 *.ogg
 *.css
+*.js
 node_modules/*
 .grunt/*
