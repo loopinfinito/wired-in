@@ -7,7 +7,7 @@ produtivo. Aperte o play e deixe seus commits fluírem.
 ## Como contribuir
 
 O projeto é todo feito apenas com puro HTML, CSS e JS.
-Enão basta por o projeto em seu `htdocs` ou, então, digite em seu terminal:
+Basta por o projeto em seu `htdocs` ou, então, digite em seu terminal:
 
 ```bash
 $ cd wired-in
