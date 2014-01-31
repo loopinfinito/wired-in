@@ -5,6 +5,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-coffee'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
 
   # project configuration
   grunt.initConfig
@@ -33,6 +34,10 @@ module.exports = (grunt) ->
       server:
         options:
           port: 8000
-
-  grunt.registerTask('default', ['connect', 'watch'])
+    uglify:
+      my_target:
+        files: 'scripts/player.min.js':'scripts/player.js'
+  
+  grunt.registerTask('server', ['connect', 'watch'])
+  grunt.registerTask('deploy', ['uglify', 'sass', 'coffee','production'])
 
