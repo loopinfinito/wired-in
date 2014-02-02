@@ -1,21 +1,30 @@
 # .wiredIn()
 
-Somos loucos por música. Somos loucos por desenvolvimento. O __.wiredIn()__ é
+![Logo WiredIn](images/readme_header.jpg)
+
+Somos loucos por música. Somos loucos por desenvolvimento. O [__.wiredIn()__](http://wiredin.loopinfinito.com.br) é
 uma coletânea periódica de músicas pra te ajudar a se manter focado e mais
 produtivo. Aperte o play e deixe seus commits fluírem.
 
 ## Como contribuir
 
-O projeto é todo feito apenas com puro HTML, CSS e JS.
-Basta por o projeto em seu `htdocs` ou, então, digite em seu terminal:
+1- Faça o clone do projeto para o seu computador.
 
-```bash
-$ cd wired-in
-$ python -m SimpleHTTPServer
-```
+2- O projeto é todo feito apenas com puro HTML, CSS e JS.	
+Como utilizamos o [Grunt.JS](http://www.gruntjs.com), basta digitar:
 
-E aponte o seu navegador para `localhost:8000`. Simples assim.
-Faça suas alterações e nos envie um _pull request_.
+`grunt server`
+
+Ele ira gerar um servidor em `localhost:8000`.	
+Como utilizamos também [Sass](http://www.sass-lang.com), ele fica observando e compila automaticamente qualquer alteração.
+
+3- Antes de submeter suas modificações, digite o comando:
+
+`grunt deploy`
+
+Assim o projeto estará pronto.
+
+4- Agora é só nós enviar um _pull request_.
 
 ## Licença
 
