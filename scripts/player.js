@@ -207,7 +207,7 @@ var player = ( function(){
 
 // binding de clicks ------------------------------------------------------------
 
-$('a').click( function( event ){
+$('a').not('footer a.purple').click( function( event ){
 	event.preventDefault()
 })
 
